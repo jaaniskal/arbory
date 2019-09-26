@@ -50,14 +50,15 @@ input.text
     -webkit-appearance: textfield;
 }
 
+
 .field
 {
     padding: steps(0.5) 0;
     float: left;
-    width: calc(50% - #{$form-gutter-half});
+    width: calc(100% - #{$form-gutter-width});
     position: relative;
     min-height: steps(7);
-    margin: 0 #{$form-gutter-half/2};
+    margin: 0 $form-gutter-half;
     
     &.i18n > .field {
         margin-left: 0;
@@ -119,6 +120,7 @@ input.text
         }
     }
 
+
     &.type-item {
         img {
             width: steps(5);
@@ -127,7 +129,10 @@ input.text
         }
     }
 
+
     &[data-name="file"] {
         word-wrap: break-word;
     }
+
 }
+

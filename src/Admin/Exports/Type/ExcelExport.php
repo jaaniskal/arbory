@@ -2,55 +2,34 @@
 
 namespace Arbory\Base\Admin\Exports\Type;
 
-use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Facades\Excel;
 use Arbory\Base\Admin\Exports\DataSetExport;
-use Maatwebsite\Excel\Concerns\WithHeadings;
 use Arbory\Base\Admin\Exports\ExportInterface;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
-class ExcelExport implements FromCollection, WithHeadings, ExportInterface
+class ExcelExport implements ExportInterface
 {
     const EXTENSION = 'xlsx';
 
-    /**
-     * @var DataSetExport
-     */
-    protected $export;
-
-    /**
-     * ExcelExport constructor.
-     *
-     * @param  DataSetExport  $export
-     */
-    public function __construct(DataSetExport $export)
-    {
-        $this->export = $export;
+    public function __construct(
+        protected DataSetExport $export
+    ) {
     }
 
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function collection(): Collection
-    {
-        return $this->export->getItems();
-    }
-
-    /**
-     * @return array
-     */
-    public function headings(): array
-    {
-        return $this->export->getColumns();
-    }
-
-    /**
-     * @param  string  $fileName
-     * @return BinaryFileResponse
-     */
     public function download(string $fileName): BinaryFileResponse
     {
-        return Excel::download($this, $fileName.'.'.self::EXTENSION);
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $sheet->fromArray($this->export->getColumns(), null, 'A1');
+        $sheet->fromArray($this->export->getItems()->toArray(), null, 'A2');
+
+        $tempPath = tempnam(sys_get_temp_dir(), 'arbory_export_');
+
+        (new Xlsx($spreadsheet))->save($tempPath);
+        $spreadsheet->disconnectWorksheets();
+
+        return response()->download($tempPath, $fileName . '.' . self::EXTENSION)->deleteFileAfterSend();
     }
 }

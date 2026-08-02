@@ -24,7 +24,7 @@
         "ext-json": "*",
         "laravel/framework": "^12|^13",
         "doctrine/dbal": "^4",
-        "ttbooking/baum": "^1.4",
+        "toponepercent/baum": "^3.4",
         "astrotomic/laravel-translatable": "^11.6",
         "arbory/translation": "^3",
         "cartalyst/sentinel": "^9|^10",

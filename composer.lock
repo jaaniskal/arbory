@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f1f395c132203dc01b301cd74295d41",
+    "content-hash": "68b319451d17cd84da6074b69a2e5099",
     "packages": [
         {
             "name": "arbory/translation",
@@ -7465,37 +7465,46 @@
             "time": "2025-12-02T11:56:42+00:00"
         },
         {
-            "name": "ttbooking/baum",
-            "version": "1.4.11",
+            "name": "toponepercent/baum",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ttbooking/baum.git",
-                "reference": "32b284f37d6cdeaa3239bd0200baf5791b0a61b7"
+                "url": "https://github.com/BilalAslim/baum.git",
+                "reference": "67b2a7c6855b258b75b1bc35cb3651ea28b507fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ttbooking/baum/zipball/32b284f37d6cdeaa3239bd0200baf5791b0a61b7",
-                "reference": "32b284f37d6cdeaa3239bd0200baf5791b0a61b7",
+                "url": "https://api.github.com/repos/BilalAslim/baum/zipball/67b2a7c6855b258b75b1bc35cb3651ea28b507fd",
+                "reference": "67b2a7c6855b258b75b1bc35cb3651ea28b507fd",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|6.*|7.*|8.*|9.*|10.*|11.*|12.*|13.*",
-                "illuminate/database": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|6.*|7.*|8.*|9.*|10.*|11.*|12.*|13.*",
-                "illuminate/events": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|6.*|7.*|8.*|9.*|10.*|11.*|12.*|13.*",
-                "illuminate/filesystem": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|6.*|7.*|8.*|9.*|10.*|11.*|12.*|13.*",
-                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|6.*|7.*|8.*|9.*|10.*|11.*|12.*|13.*",
-                "php": ">=5.6.3"
+                "illuminate/console": "~5.8.0|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/database": "~5.8.0|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/events": "~5.8.0|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/filesystem": "~5.8.0|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/support": "~5.8.0|^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0|^13.0",
+                "php": "^7.3|^8.0|^8.1|^8.2|^8.3|^8.4|^8.5"
             },
             "require-dev": {
-                "fabpot/php-cs-fixer": "^1.11",
-                "mockery/mockery": "~0.9",
-                "php-coveralls/php-coveralls": "^2.2",
-                "phpunit/phpunit": "4.*"
+                "laravel/legacy-factories": "^1.4",
+                "orchestra/testbench": "^6|^7|^8|^9|^10|^11",
+                "squizlabs/php_codesniffer": "^3.11"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Baum\\Providers\\BaumServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
-                "psr-4": {
-                    "Baum\\": "src/"
+                "files": [
+                    "src/helpers/tree_helper.php"
+                ],
+                "psr-0": {
+                    "Baum": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -7504,33 +7513,24 @@
             ],
             "authors": [
                 {
-                    "name": "Estanislau Trepat",
-                    "email": "estanis@etrepat.com",
-                    "homepage": "http://etrepat.com"
-                },
-                {
-                    "name": "Gary Pearman",
-                    "email": "gaz@red-robot.co.uk",
-                    "homepage": "http://red-robot.co.uk"
-                },
-                {
-                    "name": "Martin Seysen",
-                    "email": "mse@dogado.de",
-                    "homepage": "https://www.dogado.de"
+                    "name": "Bilal Aslim",
+                    "email": "bilalaslim@gmail.com",
+                    "homepage": "https://github.com/BilalAslim"
                 }
             ],
             "description": "Baum is an implementation of the Nested Set pattern for Eloquent models.",
             "keywords": [
+                "MPTT",
                 "database",
                 "eloquent",
                 "laravel",
-                "laravel 5",
                 "nested set"
             ],
             "support": {
-                "source": "https://github.com/ttbooking/baum/tree/1.4.11"
+                "issues": "https://github.com/BilalAslim/baum/issues",
+                "source": "https://github.com/BilalAslim/baum/tree/3.4.0"
             },
-            "time": "2026-03-23T13:07:37+00:00"
+            "time": "2026-07-06T01:41:24+00:00"
         },
         {
             "name": "unisharp/laravel-filemanager",
